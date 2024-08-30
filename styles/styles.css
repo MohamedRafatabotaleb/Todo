@@ -1,0 +1,446 @@
+:root {
+  --font-size-main: 1.125rem;
+  --font-size-small: 1.4rem;
+  --font-size-regular: 1.6rem;
+  --font-size-large: 1.8rem;
+  --font-size-xLarge: 4.2rem;
+  --font-weight-400: 400;
+  --font-weight-700: 700;
+  --default-padding: 1.6rem;
+  --timing-animation: 0.2s;
+  --color-black: #3e3e3e;
+  --color-red: #ff2d2d;
+  --color-blue: #064267;
+  --color-white: white;
+  --color-gray: #525252;
+  --color-light-gray: hsl(234, 39%, 85%);
+  --color-text: var(--color-black);
+  --color-bg: var(--color-light-gray);
+  --color-input: var(--color-white);
+  --color-link: var(--color-blue);
+  --color-task-hover: #ececec;
+  --color-bg-dark-theme: hsl(235, 21%, 11%);
+  --color-input-dark-theme: hsl(235, 24%, 19%);
+  --color-text-dark-theme: var(--color-light-gray);
+  --color-line: hsl(234, 11%, 52%);
+  --border-radius: 0.3rem;
+}
+
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0;
+}
+
+html {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: var(--font-size-main);
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* End CSS Reset */
+.App {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  transition: background var(--timing-animation);
+}
+.App--isDark {
+  --color-bg: var(--color-bg-dark-theme);
+  --color-input: var(--color-input-dark-theme);
+  --color-text: var(--color-text-dark-theme);
+  --color-task-hover: var(--color-input-dark-theme);
+  --color-link: #3cb6ff;
+  --color-gray: #adadad;
+}
+.App--isDark .top-section img {
+  content: url("../images/bg-desktop-dark.jpg");
+}
+.App--isDark .TaskList__filter:hover,
+.App--isDark .clear-btn:hover {
+  color: var(--color-white);
+  font-size: calc(var(--font-size-main) / 1.4);
+  transition: 0.3s ease;
+}
+.App__wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 33rem;
+  width: 100%;
+  flex: 1;
+  padding: var(--default-padding);
+  position: relative;
+  top: -18rem;
+}
+
+/* Top Section*/
+.top-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.top-section__flipped {
+  transform: scaleX(-1);
+}
+
+/* End Top section */
+.DarkThemeToggle {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all var(--timing-animation);
+  border: 0;
+  font-family: inherit;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.App--isDark .DarkThemeToggle {
+  color: var(--color-link);
+  text-shadow: 0 0 2px var(--color-blue);
+}
+.App--isDark .DarkThemeToggle__deactivate {
+  opacity: 1;
+  visibility: visible;
+}
+.App--isDark .DarkThemeToggle__activate {
+  opacity: 0;
+  visibility: hidden;
+}
+.DarkThemeToggle__activate, .DarkThemeToggle__deactivate {
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth transition */
+  position: absolute;
+}
+.DarkThemeToggle__deactivate {
+  opacity: 0;
+  visibility: hidden;
+}
+.DarkThemeToggle--isCompleted {
+  color: var(--color-link);
+  text-shadow: 0 0 2px var(--color-blue);
+}
+
+.TaskAddBar__LabelMain {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.TaskAddBar {
+  display: flex;
+  flex-direction: column;
+}
+.TaskAddBar__label {
+  font-size: calc(var(--font-size-main) * 2);
+  font-weight: var(--font-weight-700);
+  text-align: center;
+  margin-top: calc(var(--default-padding) * 2);
+  margin-bottom: calc(var(--default-padding) * 2);
+  letter-spacing: 1rem;
+  color: var(--color-white);
+}
+.TaskAddBar__addContent {
+  display: flex;
+  box-shadow: 0 0.6rem 0.8rem rgba(85, 102, 119, 0.03), 0 0.1rem 0.1rem rgba(85, 102, 119, 0.4);
+  cursor: text;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  height: 4rem;
+}
+.TaskAddBar__input {
+  padding: var(--default-padding);
+  background-color: var(--color-input);
+  border: 0;
+  flex: 1 1 auto;
+  color: var(--color-text);
+  min-width: 4.8rem;
+  text-align: left;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: var(--font-size-main);
+  transition: background-color var(--timing-animation);
+}
+.TaskAddBar ::-moz-placeholder {
+  color: var(--color-gray);
+  opacity: 1;
+}
+.TaskAddBar ::placeholder {
+  color: var(--color-gray);
+  opacity: 1;
+}
+.TaskAddBar__button {
+  background-color: var(--color-blue);
+  border: 0;
+  color: var(--color-white);
+  font-size: var(--font-size-main);
+  font-weight: var(--font-weight-400);
+  font-family: "Josefin Sans", sans-serif;
+  cursor: pointer;
+  padding: 0 calc(var(--default-padding));
+  transition: background-color var(--timing-animation);
+}
+.TaskAddBar__button:hover {
+  background-color: #099df8;
+}
+
+.show {
+  display: none;
+}
+
+.TaskList__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin-top: calc(var(--default-padding));
+  flex: 1;
+}
+.TaskList__list > li:first-child {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.TaskList__taskContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-task-hover);
+  border-bottom: 1px solid var(--color-line);
+}
+.TaskList__taskContent:hover {
+  background-color: var(--color-task-hover);
+}
+.TaskList__taskContent:hover .TaskList__deleteIcon {
+  opacity: 1;
+  visibility: visible;
+  margin-right: var(--default-padding);
+}
+.TaskList__taskContent:hover .TaskList__checkbox {
+  border: 1px solid hsl(280, 87%, 65%);
+}
+.TaskList__taskContent--isCompleted {
+  text-decoration: line-through;
+  color: var(--color-gray);
+}
+.TaskList__list--hideCompleted .TaskList__taskContent--isCompleted {
+  display: none;
+}
+.TaskList__taskContent--isCompleted .TaskList__checkbox {
+  background: url("../assets/icon-checkmark.svg") no-repeat center center, linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-size: 1rem auto, cover;
+}
+@media (max-width: 500px) {
+  .TaskList__taskContent--isCompleted .TaskList__checkbox {
+    background-size: 0.8rem auto, cover;
+  }
+}
+.TaskList__list--showCompleted .TaskList__taskContent:not(.TaskList__taskContent--isCompleted) {
+  display: none;
+}
+.TaskList__valueContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.TaskList__value {
+  flex: 1;
+  cursor: pointer;
+  padding: var(--default-padding);
+  transition: all var(--timing-animation);
+  text-align: end;
+  font-size: var(--font-size-main);
+}
+.TaskList__valueInput {
+  padding: var(--default-padding);
+  padding-right: calc(var(--default-padding) / 2);
+  border: none;
+  width: 100%;
+  background-color: var(--color-white);
+}
+.TaskList__checkbox {
+  width: 1.563rem;
+  height: 1.563rem;
+  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  padding: 0.2rem;
+  margin-left: calc(var(--default-padding));
+  cursor: pointer;
+  transition: all var(--timing-animation);
+  border: 0.125rem solid hsl(233, 14%, 35%);
+}
+@media (max-width: 500px) {
+  .TaskList__checkbox {
+    border: 0.1rem solid hsl(233, 14%, 35%);
+  }
+}
+.TaskList__checkboxImage {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.TaskList__deleteIcon {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--timing-animation);
+  cursor: pointer;
+}
+
+.EmptyList {
+  text-align: center;
+  color: var(--color-gray);
+  font-weight: var(--font-weight-400);
+  margin: var(--default-padding) auto 0;
+}
+.EmptyList__img {
+  height: 30rem;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+
+/* Footer */
+.footer p,
+button,
+span,
+p {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: calc(var(--font-size-main) / 1.5);
+}
+
+footer {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background-color: var(--color-task-hover);
+  height: 50px;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.task-count {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.3rem;
+  padding-left: var(--default-padding);
+  white-space: nowrap;
+}
+
+.TaskList__filters {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.clear-btn {
+  color: hsl(234, 11%, 52%);
+  padding-right: var(--default-padding);
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+.clear-btn:hover {
+  color: hsl(235, 19%, 35%);
+  transition: 0.3s ease;
+  font-size: calc(var(--font-size-main) / 1.4);
+}
+
+/* Task Filter */
+.TaskList__filter {
+  color: hsl(234, 11%, 52%);
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease;
+}
+.TaskList__filter:hover {
+  color: hsl(235, 19%, 35%);
+  transition: 0.3s ease;
+  font-size: calc(var(--font-size-main) / 1.4);
+}
+.TaskList__filter.is-active {
+  color: hsl(220, 98%, 61%);
+  pointer-events: none;
+}
+
+/* End Task Filter */
+.footer_title {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* End Footer */
+@media (max-width: 500px) {
+  .footer p,
+  button,
+  span,
+  p {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: calc(var(--font-size-main) / 1.8);
+  }
+  .TaskList__value {
+    padding: calc(var(--default-padding) / 1.5);
+    font-size: calc(var(--font-size-main) / 1.2);
+  }
+  .TaskList__checkbox {
+    width: 1rem;
+    height: 1rem;
+  }
+  .TaskList__filter {
+    padding: 0.5rem 0.5rem;
+  }
+}
+@media (max-width: 400px) {
+  footer {
+    position: relative;
+  }
+  .TaskList__filters {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-task-hover);
+    height: 50px;
+    margin-top: 8rem;
+    width: 100%;
+    justify-content: center;
+    border-radius: var(--border-radius);
+  }
+  .footer p,
+  button,
+  span,
+  p {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: calc(var(--font-size-main) / 1.5);
+  }
+  .footer_title {
+    text-align: center;
+    margin-top: 6rem;
+    font-size: calc(var(--font-size-main) / 1.5);
+  }
+  .TaskAddBar__addContent {
+    height: 3.5rem;
+  }
+  .TaskAddBar__button {
+    font-size: calc(var(--font-size-main) / 1.2);
+    padding: 0 calc(var(--default-padding) / 2);
+  }
+  .TaskAddBar__input {
+    font-size: calc(var(--font-size-main) / 1.2);
+  }
+}
