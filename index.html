@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+    />
+    <link rel="icon" href="/assets/favicon-Cyrve42L.ico" />
+    <title>Todo App</title>
+    <script type="module" crossorigin src="/assets/index-CYSGtZXQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D-XSaoSI.css">
+  </head>
+  <body>
+    <main class="App">
+      <div class="top-section">
+        <img
+          src="/assets/bg-desktop-light-BIdKokTn.jpg"
+          alt="left background photo"
+          class="top-section__flipped"
+        />
+        <img
+          src="/assets/bg-desktop-light-BIdKokTn.jpg"
+          alt="middle background photo"
+          class="top-section_image"
+        />
+        <img
+          src="/assets/bg-desktop-light-BIdKokTn.jpg"
+          alt="right background photo"
+          class="top-section__flipped"
+        />
+      </div>
+      <div class="App__wrapper">
+        <div class="TaskAddBar">
+          <div class="TaskAddBar__LabelMain">
+            <button class="DarkThemeToggle">
+              <span class="DarkThemeToggle__activate">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='26'%3e%3cpath%20fill='%23FFF'%20fill-rule='evenodd'%20d='M13%200c.81%200%201.603.074%202.373.216C10.593%201.199%207%205.43%207%2010.5%207%2016.299%2011.701%2021%2017.5%2021c2.996%200%205.7-1.255%207.613-3.268C23.22%2022.572%2018.51%2026%2013%2026%205.82%2026%200%2020.18%200%2013S5.82%200%2013%200z'/%3e%3c/svg%3e" alt="photo dark mode" />
+              </span>
+              <span class="DarkThemeToggle__deactivate">
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='26'%20height='26'%3e%3cpath%20fill='%23FFF'%20fill-rule='evenodd'%20d='M13%2021a1%201%200%20011%201v3a1%201%200%2011-2%200v-3a1%201%200%20011-1zm-5.657-2.343a1%201%200%20010%201.414l-2.121%202.121a1%201%200%2001-1.414-1.414l2.12-2.121a1%201%200%20011.415%200zm12.728%200l2.121%202.121a1%201%200%2001-1.414%201.414l-2.121-2.12a1%201%200%20011.414-1.415zM13%208a5%205%200%20110%2010%205%205%200%20010-10zm12%204a1%201%200%20110%202h-3a1%201%200%20110-2h3zM4%2012a1%201%200%20110%202H1a1%201%200%20110-2h3zm18.192-8.192a1%201%200%20010%201.414l-2.12%202.121a1%201%200%2001-1.415-1.414l2.121-2.121a1%201%200%20011.414%200zm-16.97%200l2.121%202.12A1%201%200%20015.93%207.344L3.808%205.222a1%201%200%20011.414-1.414zM13%200a1%201%200%20011%201v3a1%201%200%2011-2%200V1a1%201%200%20011-1z'/%3e%3c/svg%3e" alt="photo light mode" />
+              </span>
+            </button>
+            <label for="add-input" class="TaskAddBar__label"> TODO </label>
+          </div>
+          <form class="TaskAddBar__addContent">
+            <button class="TaskAddBar__button">Add</button>
+
+            <input
+              id="add-input"
+              class="TaskAddBar__input"
+              type="text"
+              placeholder="Type your task"
+              required
+            />
+          </form>
+        </div>
+
+        <div class="TaskList">
+          <ul class="TaskList__list"></ul>
+          <footer>
+            <div class="task-count">
+              <span id="taskCount">0</span>
+              <p>items left</p>
+            </div>
+
+            <div class="TaskList__filters">
+              <button class="TaskList__filter TaskList__filter--all">
+                All
+              </button>
+              <button class="TaskList__filter TaskList__filter--active">
+                Active
+              </button>
+              <button class="TaskList__filter TaskList__filter--completed">
+                Completed
+              </button>
+            </div>
+
+            <button class="clear-btn">Clear Completed</button>
+          </footer>
+          <div class="footer_title">Drag and drop to reorder list</div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+  </body>
+</html>
