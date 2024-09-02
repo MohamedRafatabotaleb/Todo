@@ -6,7 +6,7 @@ The To-Do List Application is a comprehensive web project developed using HTML5,
 
 ### Screenshot
 
-![Project Screenshot](images/Screenshot.png)
+![Project Screenshot](assets/Screenshot.png)
 
 ## ✨ Features
 
