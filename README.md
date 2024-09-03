@@ -4,10 +4,6 @@
 
 The To-Do List Application is a comprehensive web project developed using HTML5, CSS3, and JavaScript. This project aims to simplify daily task management with a modern user interface and a seamless user experience. The application includes multiple features such as adding, deleting, and organizing tasks, along with a responsive design that ensures optimal viewing on all devices.
 
-### Screenshot
-
-![Project Screenshot](assets/Screenshot.png)
-
 ### Demo
 
 ![Demo of the To-Do List Application](assets/Screenshot_Animated.gif)
